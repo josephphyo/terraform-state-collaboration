@@ -38,3 +38,8 @@ variable "key_name" {
   type        = string
   description = "SSH Pub Key"
 }
+
+variable "s3" {
+  name = string
+  env = string
+}
