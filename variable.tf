@@ -35,6 +35,9 @@ variable "ec2" {
 }
 
 variable "s3" {
-  name = string
-  env = string
+   type = object({
+   name = string
+   env = string
+ })
+ description = "ALL IN ONE S# VARIABLE"
 }
