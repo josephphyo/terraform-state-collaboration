@@ -24,11 +24,12 @@ variable "vpc" {
   description = "ALL IN ONE VPC VARIABLES"
 }
 
-variable "ec2" = {
+variable "ec2" {
   type = object({
     instance_type = string
-    image_id = string 
-    key_name = string 
+    image_id      = string
+    key_name      = string
+    name          = string
   })
   description = "ALL IN ONE EC2 VARIABLE"
 }
