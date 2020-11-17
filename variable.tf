@@ -9,14 +9,17 @@ variable "aws" {
 
 variable "vpc" {
   type = object({
-    public_subnets          = list(string)
-    private_subnets         = list(string)
-    database_subnets        = list(string)
-    vpc_id                  = string
-    env                     = string
-    owner                   = string
-    project                 = string
-    team                    = string
+    name        = string
+    cidr        = string
+    azs         = list(string)
+    public      = list(string)
+    private     = list(string)
+    env         = string
+    owner       = string
+    project     = string
+    team        = string
+    enable_nat  = bool
+    enable_s3ep = bool
   })
   description = "ALL IN ONE VPC VARIABLES"
 }
