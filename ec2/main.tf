@@ -14,7 +14,6 @@ resource "aws_instance" "webserver" {
   ami                    = var.image_id
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.port_22.id]
-  user_data              = data.template_file.user_data.rendered
 
   tags = {
     Name = "TF_Server_Ubuntu"
