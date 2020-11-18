@@ -1,3 +1,4 @@
+#### AWS VPC module ####
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.64.0"
@@ -26,5 +27,27 @@ module "vpc" {
     Environment = var.vpc.env
     Owner       = var.vpc.owner
     Team        = var.vpc.team
+  }
+}
+
+#### EC2 instance Webserver #####
+resource "aws_instance" "webserver" {
+  instance_type = var.ec2.instance_type
+  ami           = var.ec2.image_id
+  key_name      = var.ec2.key_name
+  subnet_id     = module.vpc.public_subnets[0]
+
+  tags = {
+    Name = var.ec2.name
+  }
+}
+
+#### S3 Bucket ####
+resource "aws_s3_bucket" "my_bucket" {
+  bucket = var.s3.name
+
+  tags = {
+    Name        = var.s3.name
+    Environment = var.s3.env
   }
 }
